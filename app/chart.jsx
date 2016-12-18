@@ -1,13 +1,12 @@
 // jshint esversion: 6
 import React from "react";
-import {d3Chart} from '../scripts/d3chart.js';
 import ReactDOM from "react-dom";
+
+const d3Chart = require('./d3chart.js');
 
 class Chart extends React.Component {
   constructor() {
 			super();
-	    this.data = React.PropTypes.array;
-	    this.domain = React.PropTypes.object;
 	}
 
   componentDidMount() {

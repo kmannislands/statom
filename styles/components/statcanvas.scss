@@ -1,0 +1,21 @@
+.viewWindow {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	overflow: scroll;
+	background-image: linear-gradient(#434343, #282828);
+}
+
+.stat-canvas {
+	min-height: 200%;
+	min-width: 200%;
+	max-height: 5000px;
+	max-width: 3000px;
+	display: inline-block;
+	position: absolute;
+	color: #efefef;
+	background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent);
+	background-size: 50px 50px;
+	padding: 7px;
+	z-index: -1;
+}

@@ -1,6 +1,8 @@
 // jshint esversion: 6
 import React from "react";
 
+require("../styles/components/node.scss");
+
 class Node extends React.Component {
 
   render() {
