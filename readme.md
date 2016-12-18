@@ -8,7 +8,7 @@ Requires git, [yarn](https://yarnpkg.com/en/docs/install)
 
 Clone the git repository:
 ```
-git clone $REPO_URL
+git clone https://github.com/kmannislands/statom.git
 ```
 Install packages
 ```
