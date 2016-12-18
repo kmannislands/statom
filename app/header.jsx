@@ -11,7 +11,7 @@ class Header extends React.Component {
 	}
 	render() {
 		return (
-			<Toolbar title="epp">
+			<Toolbar title="statom">
 				<Actionbar>
 					<ButtonGroup>
 						<Button glyph="home"/>

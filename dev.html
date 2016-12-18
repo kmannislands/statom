@@ -6,6 +6,9 @@
 </head>
 <body>
 	<div id="main"></div>
+	<!-- This hack makes babel/webpack skip this sort of require -->
+	<!-- Used to fix the ipcRenderer loading ie: without webpack mangling -->
+	<script>var es5Require = require;</script>
 	<script src="http://localhost:8000/out/app.js"></script>
 </body>
 </html>

@@ -1,44 +1,35 @@
-# epp
+## Statom
 
-<img src='assets/epp.png' width=256 />
+An electron-wrapped node-based GUI for making statistics in the r language accessible and intuitive. **Statom** seeks to provide a different paradigm through which to manipulate data and create inferences and visualization.
 
-Electron aPPlication
+## Installation
 
-- photon
-- coffeescrirpt (cjsx)
-- electron
-- react
-- react-router
-- webpack
+Requires git, [yarn](https://yarnpkg.com/en/docs/install)
 
-![screenshot]
-
-
-## Dev
-
-```sh
-# install dependencies
-$ npm install
-
-# support for reloading views, restarting electron
-# if app/* and/or index.js, electron/* are changed
-$ npm start
+Clone the git repository:
+```
+git clone $REPO_URL
+```
+Install packages
+```
+yarn install
+```
+Start the live reload and watching with webpack, etc:
+```
+yarn start
 ```
 
+# Technologies
 
-### Build
+Statom uses [electron](http://electron.atom.io/) as an application wrapper, [webpack](https://webpack.github.io/) to package dependencies for the frontend, and of course [React](https://facebook.github.io/react/) defined with [ES6 classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) and complied by [babel](https://babeljs.io/).
 
-```sh
-$ npm run build      # all
-$ npm run build-osx  # osx(64)
-$ npm run build-win  # win(32, 64)
-```
 
+## Contributing
+
+I can't stop you. Make an issue, then a pull request.
 
 ## License
 
-MIT © react-photonkit
-
-
+[MIT](https://opensource.org/licenses/MIT)
 
 [screenshot]: assets/screenshot.png

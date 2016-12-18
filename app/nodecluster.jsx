@@ -9,9 +9,9 @@ class NodeCluster extends React.Component {
 	render() {
 		return (
 				<div className="node-cluster">
-					{this.props.contents.map(node => (
+					{this.props.contents.map((node, index) => (
 						// <Node title={node.title} />
-						<Draggable
+						<Draggable key={index}
 							grid={[5,5]}>
 							<div className="stat-node"></div>
 						</Draggable>

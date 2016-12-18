@@ -2,8 +2,10 @@
 'use strict';
 const app = require('app');
 const BrowserWindow = require('browser-window');
-const Menu = require('menu')
-const template = require('./scripts/menu')
+const Menu = require('menu');
+const template = require('./scripts/menu');
+
+const ipcMain = require('ipc-main');
 
 // report crashes to the Electron project
 require('crash-reporter').start();
@@ -77,4 +79,15 @@ app.on('ready', () => {
 		const watcher = require('./scripts/watcher.js');
 		watcher.watch(app, ['./index.js', './scripts']);
 	}
+});
+
+// Test IPC main
+ipcMain.on('asynchronous-message', (event, arg) => {
+  // console.log(arg);  // prints "ping"
+  event.sender.send('asynchronous-reply', 'async: print this string in react frontend --thanks, the backend');
+});
+
+ipcMain.on('synchronous-message', (event, arg) => {
+  // console.log(arg);  // prints "ping"
+  event.returnValue = 'sync: print this string in react frontend --thanks, the backend';
 });

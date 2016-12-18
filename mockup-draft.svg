@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1366 768" style="enable-background:new 0 0 1366 768;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;}
+	.st1{fill:none;stroke:#231F20;stroke-width:0.3;}
+	.st2{fill:url(#SVGID_1_);}
+	.st3{fill:url(#Grid_.5_inch_Lines);}
+	.st4{fill:#FFFFFF;}
+	.st5{fill:#E1DFE1;}
+	.st6{font-family:'HelveticaNeue-Medium';}
+	.st7{font-size:15px;}
+	.st8{fill:#E1DFE1;stroke:#000000;stroke-miterlimit:10;}
+	.st9{fill:none;stroke:#808080;stroke-miterlimit:10;}
+	.st10{font-family:'Times-Italic';}
+	.st11{font-size:13px;}
+	.st12{fill:#FFFFFF;stroke:#000000;stroke-miterlimit:10;}
+	.st13{letter-spacing:6;}
+	.st14{letter-spacing:18;}
+	.st15{letter-spacing:21;}
+	.st16{letter-spacing:3;}
+	.st17{fill:#E6E6E6;stroke:#000000;stroke-miterlimit:10;}
+	.st18{letter-spacing:7;}
+	.st19{letter-spacing:30;}
+	.st20{fill:#FFFFFF;stroke:#999999;stroke-miterlimit:10;}
+	.st21{clip-path:url(#SVGID_3_);fill:#FFFFFF;}
+	.st22{clip-path:url(#SVGID_5_);}
+	.st23{clip-path:url(#SVGID_7_);}
+</style>
+<pattern  y="768" width="72" height="72" patternUnits="userSpaceOnUse" id="Grid_.5_inch_Lines" viewBox="72.2 -144.2 72 72" style="overflow:visible;">
+	<g>
+		<rect x="72.2" y="-144.2" class="st0" width="72" height="72"/>
+		<g>
+			<line class="st1" x1="126.2" y1="-72.5" x2="126.2" y2="0"/>
+			<line class="st1" x1="90.2" y1="-72.5" x2="90.2" y2="0"/>
+		</g>
+		<g>
+			<line class="st1" x1="144" y1="-126.2" x2="216.5" y2="-126.2"/>
+			<line class="st1" x1="144" y1="-90.2" x2="216.5" y2="-90.2"/>
+		</g>
+		<g>
+			<line class="st1" x1="72" y1="-126.2" x2="144.5" y2="-126.2"/>
+			<line class="st1" x1="126.2" y1="-144.5" x2="126.2" y2="-72"/>
+			<line class="st1" x1="72" y1="-90.2" x2="144.5" y2="-90.2"/>
+			<line class="st1" x1="90.2" y1="-144.5" x2="90.2" y2="-72"/>
+		</g>
+		<g>
+			<line class="st1" x1="0" y1="-126.2" x2="72.5" y2="-126.2"/>
+			<line class="st1" x1="0" y1="-90.2" x2="72.5" y2="-90.2"/>
+		</g>
+		<g>
+			<line class="st1" x1="126.2" y1="-216.5" x2="126.2" y2="-144"/>
+			<line class="st1" x1="90.2" y1="-216.5" x2="90.2" y2="-144"/>
+		</g>
+	</g>
+</pattern>
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="540.5" y1="22" x2="540.5" y2="746">
+	<stop  offset="0" style="stop-color:#434343"/>
+	<stop  offset="1" style="stop-color:#282828"/>
+</linearGradient>
+<rect y="22" class="st2" width="1081" height="724"/>
+<rect y="22" class="st3" width="1081" height="724"/>
+<g>
+	<rect x="0.5" y="0.5" class="st4" width="1365" height="21"/>
+	<path d="M1365,1v20H1V1H1365 M1366,0H0v22h1366V0L1366,0z"/>
+</g>
+<g>
+	<rect x="0.5" y="746.5" class="st4" width="1365" height="21"/>
+	<path d="M1365,747v20H1v-20H1365 M1366,746H0v22h1366V746L1366,746z"/>
+</g>
+<g>
+	<rect x="342.5" y="44.5" class="st5" width="119" height="119"/>
+	<path d="M461,45v118H343V45H461 M462,44H342v120h120V44L462,44z"/>
+</g>
+<text transform="matrix(1 0 0 1 386.2515 106.5996)" class="st6 st7">DTA</text>
+<rect x="394.5" y="164.5" class="st8" width="14" height="14"/>
+<g>
+	<rect x="1081.5" y="22.5" class="st4" width="284" height="723"/>
+	<path d="M1365,23v722h-283V23H1365 M1366,22h-285v724h285V22L1366,22z"/>
+</g>
+<g>
+	<rect x="139.5" y="153.5" class="st5" width="119" height="119"/>
+	<path d="M258,154v118H140V154H258 M259,153H139v120h120V153L259,153z"/>
+</g>
+<g>
+	<rect x="248.5" y="337.5" class="st5" width="119" height="59"/>
+	<path d="M367,338v58H249v-58H367 M368,337H248v60h120V337L368,337z"/>
+</g>
+<g>
+	<rect x="351.5" y="460.5" class="st5" width="119" height="119"/>
+	<path d="M470,461v118H352V461H470 M471,460H351v120h120V460L471,460z"/>
+</g>
+<path class="st9" d="M471.5,209.5c0.7-2.4,9.1-33.1-1-39c-6.4-3.7-17.6,3.9-31,13c-24.3,16.5-32.6,30.3-38,28c-3.4-1.4-5.9-9.2,0-40
+	"/>
+<path class="st9" d="M351.5,328.5c3.7-11.7,10.2-26,21-28c12.2-2.2,25.8,10.6,32,7c3-1.7,33.2-12.8,28-34"/>
+<g>
+	<rect x="529.5" y="307.5" class="st5" width="299" height="89"/>
+	<path d="M828,308v88H530v-88H828 M829,307H529v90h300V307L829,307z"/>
+</g>
+<path class="st9" d="M198.5,280.5c11.3,22.3,19.6,26.3,25,26c8.4-0.5,11.4-11.4,25-14c2-0.4,11.8-2.3,18,3c7,5.9,7.9,19.6,1,33"/>
+<text transform="matrix(1 0 0 1 560 352)" class="st10 st11">testscr ~ (1/(1 + exp(- (beta0 + beta1 * str))))</text>
+<rect x="671.5" y="397.5" class="st12" width="15" height="15"/>
+<path class="st9" d="M680,412.8c-20.4,26.7-39.5,36-53.1,39.6c-22.9,6.1-50.7-1.9-105.3-18.2c-30.3-9.1-51-16.8-61.2-4.3
+	c-5.2,6.4-5.8,16-5.4,23.5"/>
+<rect x="447.5" y="446.5" class="st12" width="15" height="15"/>
+<rect x="259.5" y="321.5" class="st12" width="15" height="15"/>
+<rect x="343.5" y="321.5" class="st12" width="15" height="15"/>
+<path class="st9" d="M307.5,405.5c3.9,13,10.2,28.1,20.1,31c15.3,4.6,29.4-23,37.4-16c2.6,2.3,5,8.6,3.5,27"/>
+<rect x="300.5" y="397.5" class="st12" width="15" height="15"/>
+<rect x="360.5" y="446.5" class="st12" width="15" height="15"/>
+<text transform="matrix(1 0 0 1 184.2588 212.5996)" class="st6 st7">CSV</text>
+<rect x="191.5" y="273.5" class="st12" width="14" height="14"/>
+<path class="st9" d="M511.5,271.5c0.3,8.1,2,17.8,9,23c8.3,6.2,21.6,4,64-14c47.8-20.2,59.3-29.4,72-24c7.7,3.3,17.6,12.6,22,43"/>
+<text transform="matrix(1 0 0 1 398.6328 526.584)" class="st6 st7">LM</text>
+<text transform="matrix(1 0 0 1 259.853 371.5918)" class="st6 st7">Combine data</text>
+<g>
+	<rect x="411" y="217" class="st8" width="120" height="45"/>
+	<rect x="425" y="264" class="st8" width="15" height="15.5"/>
+	<rect x="463.5" y="201.5" class="st8" width="15" height="15"/>
+	<text transform="matrix(1 0 0 1 438.6885 244.0981)" class="st6 st7">Summary</text>
+	<rect x="503" y="263" class="st8" width="17" height="17"/>
+</g>
+<rect x="671.5" y="291.5" class="st12" width="15" height="15"/>
+<text transform="matrix(1 0 0 1 8.0737 17.1074)" class="st6 st7">File</text>
+<text transform="matrix(1 0 0 1 32.5737 17.1074)" class="st6 st7 st13"> </text>
+<text transform="matrix(1 0 0 1 44.0737 17.1074)" class="st6 st7">Project</text>
+<text transform="matrix(1 0 0 1 93.5737 17.1074)" class="st6 st7 st14"> </text>
+<text transform="matrix(1 0 0 1 116.0737 17.1074)" class="st6 st7">Nodes</text>
+<text transform="matrix(1 0 0 1 161.0737 17.1074)" class="st6 st7 st15"> </text>
+<text transform="matrix(1 0 0 1 188.0737 17.1074)" class="st6 st7">Run</text>
+<text transform="matrix(1 0 0 1 215.8737 17.1074)" class="st6 st7 st16"> </text>
+<text transform="matrix(1 0 0 1 224.0737 17.1074)" class="st6 st7">Packages</text>
+<rect x="1081" y="22" class="st17" width="285" height="169"/>
+<text transform="matrix(1 0 0 1 9.0854 761.5742)" class="st6 st7">WD: /Users/kieran/node-stats/example/</text>
+<text transform="matrix(1 0 0 1 284.6854 761.5742)" class="st6 st7 st18"> </text>
+<text transform="matrix(1 0 0 1 297.0854 761.5742)" class="st6 st7 st19"> </text>
+<text transform="matrix(1 0 0 1 333.0854 761.5742)" class="st6 st7">Build: Passing √</text>
+<text transform="matrix(1 0 0 1 1101.5693 45.1074)" class="st6 st7">Summary</text>
+<text transform="matrix(1 0 0 1 1101.5693 81.1074)" class="st6 st7">Available Outputs:</text>
+<text transform="matrix(1 0 0 1 1101.5693 117.1074)" class="st6 st7">[ ] coefficients (list)</text>
+<text transform="matrix(1 0 0 1 1101.5693 153.1074)" class="st6 st7">[ ] summary (table)</text>
+<path class="st20" d="M409.5,588.5c0,7.3,0,14.7,0,22"/>
+<g>
+	<rect x="349" y="618" class="st8" width="120" height="45"/>
+	<rect x="363" y="665" class="st8" width="15" height="15.5"/>
+	<rect x="401.5" y="602.5" class="st8" width="15" height="15"/>
+	<text transform="matrix(1 0 0 1 376.6885 645.0981)" class="st6 st7">Summary</text>
+	<rect x="441" y="664" class="st8" width="17" height="17"/>
+</g>
+<g>
+	
+		<image style="overflow:visible;opacity:0.4;enable-background:new    ;" width="51" height="62" xlink:href="B10B0946B281F58E.png"  transform="matrix(1 0 0 1 452.9496 647.176)">
+	</image>
+	<g>
+		<g>
+			<g>
+				<g>
+					<defs>
+						<rect id="SVGID_2_" x="467.4" y="658.2" width="28" height="40"/>
+					</defs>
+					<clipPath id="SVGID_3_">
+						<use xlink:href="#SVGID_2_"  style="overflow:visible;"/>
+					</clipPath>
+					<polygon class="st21" points="477.5,678.7 479.4,677.7 481,676.8 478.4,672 482.8,672 471.4,660.6 471.4,676.6 474.7,673.4 
+											"/>
+				</g>
+				<g>
+					<defs>
+						
+							<rect id="SVGID_4_" x="469.3" y="655.4" transform="matrix(0.8824 -0.4705 0.4705 0.8824 -260.962 306.8071)" width="28" height="40"/>
+					</defs>
+					<clipPath id="SVGID_5_">
+						<use xlink:href="#SVGID_4_"  style="overflow:visible;"/>
+					</clipPath>
+					
+						<rect x="475.9" y="669.2" transform="matrix(0.8824 -0.4705 0.4705 0.8824 -260.6585 303.5262)" class="st22" width="2" height="8"/>
+				</g>
+				<g>
+					<defs>
+						<rect id="SVGID_6_" x="467.4" y="658.2" width="28" height="40"/>
+					</defs>
+					<clipPath id="SVGID_7_">
+						<use xlink:href="#SVGID_6_"  style="overflow:visible;"/>
+					</clipPath>
+					<polygon class="st23" points="472.4,663 472.4,674.2 475.7,671.1 480.4,671.1 					"/>
+				</g>
+			</g>
+		</g>
+	</g>
+</g>
+<rect x="401.5" y="580.5" class="st12" width="15" height="15"/>
+<rect x="1080.5" y="191.5" class="st17" width="286" height="161"/>
+<text transform="matrix(1 0 0 1 1101.5771 217.5986)" class="st6 st7">Memory Allocation</text>
+<text transform="matrix(1 0 0 1 1101.5771 253.5986)" class="st6 st7">6.8 GB Available/1.4 Allocated</text>
+<rect x="1102" y="281" class="st4" width="239" height="15"/>
+<rect x="1102" y="281" width="137" height="15"/>
+<text transform="matrix(1 0 0 1 1105.0693 311.5942)" class="st6 st7">63% </text>
+</svg>

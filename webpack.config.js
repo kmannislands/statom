@@ -7,6 +7,7 @@ module.exports = {
     publicPath: 'out/',
     filename: 'app.js'
   },
+	target: 'electron-renderer',
   module: {
     loaders: [
       { test: /\.jsx?$/, exclude: /node_modules/, loaders: ['babel-loader'] },

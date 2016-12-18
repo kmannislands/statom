@@ -30,7 +30,9 @@
   ],
   "dependencies": {
     "d3": "^4.4.0",
+    "electron": "^1.4.12",
     "electron-debug": "^0.2.1",
+    "fs": "^0.0.1-security",
     "history": "^1.12.3",
     "object-assign": "^4.0.1",
     "react": "^0.14.1",
