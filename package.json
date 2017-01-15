@@ -29,17 +29,25 @@
     "electron-app"
   ],
   "dependencies": {
-    "d3": "^4.4.0",
+    "cheerio": "^0.22.0",
+    "curlrequest": "^1.0.1",
+    "d3": "^4.4.1",
     "electron": "^1.4.12",
     "electron-debug": "^0.2.1",
     "fs": "^0.0.1-security",
     "history": "^1.12.3",
+    "jsonfile": "^2.4.0",
+    "lodash": "^4.17.4",
     "object-assign": "^4.0.1",
+    "r-script": "^0.0.3",
     "react": "^0.14.1",
+    "react-dnd": "^2.1.4",
+    "react-dnd-html5-backend": "^2.1.2",
     "react-dom": "^0.14.1",
     "react-draggable": "^2.2.3",
     "react-faux-dom": "^3.0.0",
-    "react-photonkit": "^0.3.2"
+    "react-photonkit": "^0.3.2",
+    "recharts": "^0.19.1"
   },
   "devDependencies": {
     "babel-core": "^6.4.0",
@@ -57,6 +65,7 @@
     "style-loader": "^0.12.4",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.2",
+    "webpack-dashboard": "^0.2.0",
     "webpack-dev-server": "^1.12.0",
     "xo": "^0.9.0"
   },

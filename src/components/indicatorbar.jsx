@@ -11,7 +11,7 @@ class IndicatorBar extends React.Component {
 						<tbody>
 							<tr>
 								{this.props.toIndicate.map((indi)=> (
-									<td>{indi.title} : {indi.value}</td>
+									<td key={indi.title}>{indi.title} : {indi.value}</td>
 								))}
 							</tr>
 						</tbody>

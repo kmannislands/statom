@@ -23,6 +23,10 @@ import TabBar from "./tabbar.jsx";
 import StatCanvas from "./statcanvas.jsx";
 import Chart from "./chart.jsx";
 
+// React-DND stuff for the global context, backend
+var HTML5Backend = require('react-dnd-html5-backend');
+var DragDropContext = require('react-dnd').DragDropContext;
+
 class WindowCtrl extends React.Component {
 	// Initialize function
 	constructor(props) {
@@ -88,4 +92,7 @@ class WindowCtrl extends React.Component {
 	}
 }
 
-export default WindowCtrl;
+
+
+module.exports = DragDropContext(HTML5Backend)(WindowCtrl);
+// export default WindowCtrl;

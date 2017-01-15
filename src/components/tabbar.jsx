@@ -12,9 +12,9 @@ class TabBar extends React.Component {
 				<TabGroup activeKey={1} draggable={true}>
 					{/* Render a tab per tab prop element */}
 					{this.props.tabs.map(tab => (
-						<TabItem title={tab.title + " " + tab.key} eventKey={tab.key}>
+						<TabItem title={tab.title + " " + tab.key} eventKey={tab.key} key={tab.key}>
 							<div>
-								<StatCanvas tabNum={tab.key}/>
+								<StatCanvas tabNum={tab.key} />
 							</div>
 						</TabItem>
 					))}

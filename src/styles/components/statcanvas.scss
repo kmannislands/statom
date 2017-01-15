@@ -19,3 +19,14 @@
 	padding: 7px;
 	z-index: -1;
 }
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.4);
+		border-radius: 5px;
+}
+
+::-webkit-scrollbar {
+    // width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+		transform: translateX(-5px);
+}

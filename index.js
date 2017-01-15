@@ -5,7 +5,16 @@ const BrowserWindow = require('browser-window');
 const Menu = require('menu');
 const template = require('./scripts/menu');
 
+const jsonfile = require('jsonfile');
+
+// shouldn't have to manually include this but we do, thanks babel
+const Buffer = require("buffer").Buffer;
+const fs = require("fs");
+
 const ipcMain = require('ipc-main');
+
+// R core
+const R = require("r-script");
 
 // report crashes to the Electron project
 require('crash-reporter').start();
@@ -75,16 +84,40 @@ app.on('activate-with-no-open-windows', () => {
 app.on('ready', () => {
 	mainWindow = createMainWindow();
 
+
+	// dev environment live reloader shiet
 	if (process.env.DEV) {
 		const watcher = require('./scripts/watcher.js');
 		watcher.watch(app, ['./index.js', './scripts']);
 	}
 });
 
-// Test IPC main
-ipcMain.on('asynchronous-message', (event, arg) => {
-  // console.log(arg);  // prints "ping"
-  event.sender.send('asynchronous-reply', 'async: print this string in react frontend --thanks, the backend');
+// TODO: come up with a seperate file for ipcMain event handling
+// Or an object wrapper or something
+
+// Respond to request for r version from frontend
+ipcMain.on('request-r-version', (event, arg) => {
+	R("r/version.r")
+	.data({
+		flag: '1'
+	})
+	.call(function(err, d) {
+		if (err){
+			event.sender.send('r-version', new Buffer(err).toString());
+		} else event.sender.send('r-version', d);
+	});
+});
+
+// reads a file for the first time
+ipcMain.on('request-updateFile', (event, arg) => {
+	let ret;
+	jsonfile.readFile(arg, function(err, obj) {
+		if (err)	{
+			ipcMain.sender.send('updateFile',
+				"Error: problem reading your file.");
+		}
+		else ipcMain.sender.send('updateFile', obj);
+	});
 });
 
 ipcMain.on('synchronous-message', (event, arg) => {
