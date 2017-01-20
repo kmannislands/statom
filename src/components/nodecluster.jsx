@@ -6,32 +6,25 @@ import Node from './node.jsx';
 // require("../styles/components/node.scss");
 
 class NodeCluster extends React.Component {
-	passToParent(val) {
-		if (typeof this.props[val] === 'function') {
-			return this.props[val];
-		}
-	}
-	renderNodes(nodeList) {
-		let toReturn;
-		console.log(nodeList);
 
-		return toReturn;
-	}
 	render() {
+		// itertate throught the object's properties ie the nodes
+		// stored by unique id's and push to array for display
 		let nodeArr = [];
+
 		for (var key in this.props.contents) {
-		// for (let i = 0; i < Object.size(this.props.contents); i++) {
-		if (this.props.contents.hasOwnProperty(key)) {
-	    var value = this.props.contents[key];
-			nodeArr.push(
-				<Node key={value.key} id={value.key}
-					inlets={value.inlets} outlets={value.outlets}
-					type={value.type}
-				/>
-			);
-	  }
+			if (this.props.contents.hasOwnProperty(key)) {
+		    var value = this.props.contents[key];
+				nodeArr.push(
+					<Node key={value.key} id={value.key}
+						inlets={value.inlets} outlets={value.outlets}
+						type={value.type}
+					/>
+				);
+		  }
 
 		}
+
 		return (
 				<div className="node-cluster">
 					{ nodeArr }

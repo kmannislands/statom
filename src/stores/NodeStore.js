@@ -3,9 +3,25 @@ var alt = require('../alt');
 var NodeActions = require('../actions/NodeActions');
 var NodeSource = require('../sources/NodeSource');
 
-class LocationStore {
+// useful in general; monkey patched here cause that's where I use it
+// but TODO: utils file or use lodash
+
+Object.size = function(obj) {
+    var size = 0, key;
+    for (key in obj) {
+        if (obj.hasOwnProperty(key)) size++;
+    }
+    return size;
+};
+
+function nodedef(id, node) {
+	this[id] = node;
+}
+
+class NodeStore {
   constructor() {
     this.nodes = {};
+    this.zoom = {};
     this.errorMessage = null;
 
     this.bindListeners({
@@ -15,6 +31,10 @@ class LocationStore {
       addNode: NodeActions.ADD_NODE
     });
 
+
+		// Be careful with this shit
+		// Exporting public functions can undermine unidirectional flow
+		// MAKE SURE: No direct getters or setters
     this.exportPublicMethods({
       getNode: this.getNode
     });
@@ -48,11 +68,11 @@ class LocationStore {
   // }
 
   addNode(node) {
-		let { nodes } = this.getState();
+		// let { nodes } = this.state;
 
 		// autiomatically asign a larger ID
 		// TODO check for uniqueness and/or implement a better method
-		let currId = Object.size(nodes) + 1;
+		let currId = Object.size(this.nodes) + 1;
 
 		console.log("adding currId: " + currId);
 
@@ -91,7 +111,7 @@ class LocationStore {
 			let nodeCopy = JSON.parse(JSON.stringify(prevState.nodes));
 
 			// flex
-			copy.nodes = _.assign(nodeCopy, new node(currId,newNode));
+			copy.nodes = _.assign(nodeCopy, new nodedef(currId,newNode));
 
 			return copy;
 		});

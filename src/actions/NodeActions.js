@@ -2,21 +2,25 @@
 var alt = require('../alt');
 
 class NodeActions {
-  updateNodes(nodes) {
-    this.dispatch(nodes);
-  }
-
-  fetchNodes(filePath) {
-    this.dispatch(filePath);
-  }
-
-	nodesFailed(errorMessage) {
-		this.dispatch(errorMessage);
+	updateNodes(nodes) {
+		return {nodes};
 	}
 
-  addNode(node) {
-    this.dispatch(node);
-  }
+	fetchNodes(filePath) {
+		return {filePath};
+	}
+
+	nodesFailed(errorMessage) {
+		return {errorMessage};
+	}
+
+	addNode(node) {
+		return {node};
+	}
+
+	addRelationShip(){
+		return;
+	}
 }
 
 module.exports = alt.createActions(NodeActions);

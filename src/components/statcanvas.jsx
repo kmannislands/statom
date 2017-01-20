@@ -11,6 +11,13 @@ import IndicatorBar from "./indicatorbar.jsx";
 import CanvasBG from "./CanvasBG.jsx";
 // import IndicatorBar from "./indicatorbar.jsx";
 
+// flux state implementation container
+// import AltContainer from "alt-container";
+import connectToStores from 'alt-utils/lib/connectToStores';
+
+// import the relevant store for flux
+import NodeStore from "../stores/NodeStore"
+
 // uses hack defined in html script
 // we say var es5Require = require
 // to escape webpack from mangling the package
@@ -19,37 +26,28 @@ const ipcRenderer = es5Require('electron').ipcRenderer;
 
 require("../styles/components/statcanvas.scss");
 
-Object.size = function(obj) {
-    var size = 0, key;
-    for (key in obj) {
-        if (obj.hasOwnProperty(key)) size++;
-    }
-    return size;
-};
-
-function node(id, node) {
-	this[id] = node;
-}
-
 class StatCanvas extends React.Component {
-	constructor(props) {
-		super(props);
-		this.addNode = this.addNode.bind(this);
-		this.zoomIn = this.zoomIn.bind(this);
-    this.zoomOut = this.zoomOut.bind(this);
-		this.currId = 1;
+	// TODO implement zoom stuff in flux model
+	// constructor(props) {
+	// 	super(props);
+	// 	this.zoomIn = this.zoomIn.bind(this);
+  //   this.zoomOut = this.zoomOut.bind(this);
+	// }
 
-		this.state = {
-			nodes: {},
-			zoom: 100,
-			r_version: '?'
-		};
+	// Static methods for alt flux
+	static getStores() {
+    return [NodeStore];
+  }
 
-	}
+  static getPropsFromStores() {
+    return NodeStore.getState();
+  }
+
 	componentDidMount() {
 		NodeStore.fetchNodes("./test.statom.json");
 	}
 	componentWillMount() {
+		// TODO: move this logic
 		// responder to r version event emitter from ipcMain
 		ipcRenderer.on('r-version', (event, arg) => {
 			if (typeof arg === 'string') {
@@ -60,80 +58,39 @@ class StatCanvas extends React.Component {
 		// request that r-version logic on the backend
 		ipcRenderer.send('request-r-version', 'ping');
 	}
+	// TODO Move this logic as well
 	setVersion(arg) {
-		this.setState(function(prevState){
-			let copy = JSON.parse(JSON.stringify(prevState));
-			let newVer = {
-				r_version: arg.minor + ' "' + arg.nickname + '"'
-			};
-
-			copy = _.assign(copy, newVer);
-
-			return copy;
-		});
+		// this.setState(function(prevState){
+		// 	let copy = JSON.parse(JSON.stringify(prevState));
+		// 	let newVer = {
+		// 		r_version: arg.minor + ' "' + arg.nickname + '"'
+		// 	};
+		//
+		// 	copy = _.assign(copy, newVer);
+		//
+		// 	return copy;
+		// });
 	}
-	addNode() {
-		let currId = Object.size(this.state.nodes) + 1;
-		// console.log("currId: " + currId);
-		let newNode = {
-			key: currId,
-			outlets: [
-				{
-					id: currId + '-outlet',
-					data_type: 'string',
-					name: 'val'
-				}
-			],
-			inlets: [
-				{
-					id: currId + '-inlet',
-					data_type: 'string',
-					name: 'argument'
-				},
-				{
-					id: currId + '-inlet1',
-					data_type: 'string',
-					name: 'argument2'
-				},
-				{
-					id: currId + '-inlet2',
-					data_type: 'string',
-					name: 'argument3'
-				}
-			],
-			type: 'input'
-		};
-    this.setState(function(prevState){
-			// milad help, there's gotta be a better way to do this
-			// esp since I cheated and brough lodash
-			let copy = JSON.parse(JSON.stringify(prevState));
-			let nodeCopy = JSON.parse(JSON.stringify(prevState.nodes));
-
-			// flex
-			copy.nodes = _.assign(nodeCopy, new node(currId,newNode));
-
-			return copy;
-		});
-	}
-	zoomIn() {
-		this.setState((prevState) => (
-			{ zoom: prevState.zoom * zoomAmount }
-		));
-	}
-	zoomOut() {
-		this.setState((prevState) => (
-			{ zoom: prevState.zoom / zoomAmount }
-		));
-	}
+	// zoomIn() {
+	// 	this.setState((prevState) => (
+	// 		{ zoom: prevState.zoom * zoomAmount }
+	// 	));
+	// }
+	// zoomOut() {
+	// 	this.setState((prevState) => (
+	// 		{ zoom: prevState.zoom / zoomAmount }
+	// 	));
+	// }
 	render() {
 		return (
+
 				<div className="viewWindow">
-						<StatTools addNode={this.addNode}
-						zoomIn={this.zoomIn}
-						zoomOut={this.zoomOut}/>
+						<StatTools />
 						<div className="stat-canvas"
-							style={{zoom: this.state.zoom + "%"}}>
-							<NodeCluster contents={this.state.nodes}/>
+							// style={{zoom: this.state.zoom + "%"}}
+						>
+							<NodeCluster
+								contents={this.props.nodes} />
 							{/* <CanvasBG
 								width={1000}
 								height={600}
@@ -143,7 +100,7 @@ class StatCanvas extends React.Component {
 							toIndicate={[
 								{
 									title: "zoom",
-									value: Math.round(this.state.zoom) + "%"
+									// value: Math.round(this.state.zoom) + "%"
 								},
 								{
 									title: "Directory",
@@ -151,7 +108,7 @@ class StatCanvas extends React.Component {
 								},
 								{
 									title: "Version",
-									value: this.state.r_version
+									// value: this.state.r_version
 								}
 							]}
 						 />
@@ -160,4 +117,4 @@ class StatCanvas extends React.Component {
 	}
 }
 
-export default StatCanvas;
+export default connectToStores(StatCanvas);
