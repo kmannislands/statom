@@ -16,7 +16,7 @@ import CanvasBG from "./CanvasBG.jsx";
 import connectToStores from 'alt-utils/lib/connectToStores';
 
 // import the relevant store for flux
-import NodeStore from "../stores/NodeStore"
+import NodeStore from "../stores/NodeStore";
 
 // uses hack defined in html script
 // we say var es5Require = require
@@ -87,14 +87,16 @@ class StatCanvas extends React.Component {
 				<div className="viewWindow">
 						<StatTools />
 						<div className="stat-canvas"
+							style={ {height: this.props.dimensions[1] + "px",
+								width: + this.props.dimensions[0] + "px"} }
 							// style={{zoom: this.state.zoom + "%"}}
 						>
 							<NodeCluster
 								contents={this.props.nodes} />
-							{/* <CanvasBG
-								width={1000}
-								height={600}
-								contents={this.state.nodes} /> */}
+							<CanvasBG
+								width={this.props.dimensions[0]}
+								height={this.props.dimensions[1]}
+								contents={this.props.nodes} />
 						</div>
 						<IndicatorBar
 							toIndicate={[

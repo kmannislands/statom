@@ -5,26 +5,30 @@ import Outlet from "./outlet.jsx";
 
 import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same time
 
+import NodeActions from "../actions/NodeActions";
+
 const PropTypes = React.PropTypes;
 
 require("../styles/components/node.scss");
 
 class Node extends React.Component {
-	passToParent(val) {
-		if (typeof this.props[val] === 'function') {
-			return this.props[val];
-		}
-	}
   render() {
+		let nodeID = this.props.id;
     return (
-			<Draggable grid={[5,5]}>
+			<Draggable grid={[5,5]} onDrag={function(e, i){
+					NodeActions.setNodeCoords(nodeID, [i.lastX, i.lastY]);
+				}}
+				onStop={function(e, i){
+					NodeActions.setNodeCoords(nodeID, [i.lastX, i.lastY]);
+				}}
+			>
       <div className="stat-node">
 				<div className="inlet-container">
 					{
 						this.props.inlets.map((inlet, index) => (
 							<Inlet
 								key={index}
-								id={ "i" + this.props.id + "-" + index }
+								id={ "i-" + this.props.id + "-" + index }
 							/>
 						))
 					}

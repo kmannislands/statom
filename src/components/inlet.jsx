@@ -18,7 +18,7 @@ var inletSource = {
   },
 	isDragging: function(props, monitor) {
 		// console.log('dragging');
-		console.log(monitor);
+		// console.log(monitor);
 		// console.log(monitor.getInitialClientOffset());
 		// console.log(monitor.getDifferenceFromInitialOffset());
 		// console.log(monitor.getInitialClientOffset());
@@ -32,7 +32,7 @@ var inletSource = {
     // When dropped on a compatible target, do something
     var item = monitor.getItem();
     var dropResult = monitor.getDropResult();
-		console.log(dropResult);
+		// console.log(dropResult);
     // CardActions.moveCardToList(item.id, dropResult.listId);
   }
 };
@@ -48,11 +48,6 @@ function collect(connect, monitor) {
 }
 
 class Inlet extends React.Component {
-	passToParent(val) {
-		if (typeof this.props[val] === 'function') {
-			return this.props[val];
-		}
-	}
   render() {
 		var isDragging = this.props.isDragging;
 	 	var connectDragSource = this.props.connectDragSource;

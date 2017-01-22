@@ -2,6 +2,7 @@
 var alt = require('../alt');
 
 class NodeActions {
+
 	updateNodes(nodes) {
 		return {nodes};
 	}
@@ -18,8 +19,12 @@ class NodeActions {
 		return {node};
 	}
 
-	addRelationShip(){
-		return;
+	setNodeCoords(node, coords) {
+		return {node, coords};
+	}
+
+	createRelationship(inlet, outlet){
+		return {inlet, outlet};
 	}
 }
 

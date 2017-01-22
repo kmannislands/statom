@@ -1,7 +1,10 @@
 // jshint esversion: 6
 import React from "react";
+import ReactDOM from "react-dom";
 
 // import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same time
+import NodeActions from "../actions/NodeActions";
+
 
 var DropTarget = require('react-dnd').DropTarget;
 var ItemTypes = require('./Constants').ItemTypes;
@@ -48,12 +51,16 @@ var outletTarget = {
     // Obtain the dragged item
     var item = monitor.getItem();
 		console.log("Dropped!");
-		console.log(item);
-		// TODO: remove console log, use these two coordinates to render path
+		// dropped INLET
+		let inlet = item;
+		// the current OUTLET being dropped on
+		let outlet = props;
+		NodeActions.createRelationship(inlet, outlet);
+		// TODO: remove console , use these two coordinates to render path
 		var clientOffset = monitor.getClientOffset();
 		var initialClientOffset = monitor.getInitialClientOffset();
-		console.log(clientOffset);
-		console.log(initialClientOffset);
+		// console.log(clientOffset);
+		// console.log(initialClientOffset);
 
     // You can do something with it
     // ChessActions.movePiece(item.fromPosition, props.position);

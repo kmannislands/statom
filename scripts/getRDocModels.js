@@ -4,11 +4,12 @@ const fs = require('fs');
 const curl = require('curlrequest'); // our curl wrapper
 const jsonfile = require('jsonfile');
 const cheerio = require("cheerio"); // here’s the core jquery API implementation
+const _ = require("lodash");
 
-const cachePath = "./models/r_package_full.json";
+const cachePath = "./cache/";
 
 var dta = {
-	"packages": []
+	"packages": {}
 };
 
 let totalPckgs = 0;
@@ -16,112 +17,116 @@ let pckgsLoaded = 0;
 let totalFs = 0;
 let totalFsLoaded = 0;
 
-function reCheck(check, interval, cb) {
-	setTimeout(function(){
-		if(!check()) reCheck(check, interval, cb);
-	}, interval);
+let functionsPArr = [];
+
+
+function packageDef(id, contents) {
+	this[id] = contents;
 }
 
-function loadF(instance, spiderUrl, pckgName) {
-    // define the structure of info to read off page using cheerio selectors
-    let descSelector = "section:first-of-type p";
-		let argsSelector = ".topic--arguments dl";
+function loadF(spiderUrl, pckgName) {
+		// define the structure of info to read off page using cheerio selectors
+		let descSelector = "section:first-of-type p";
+		let argsSelector = ".topic--arguments";
 
-    let curlOps = {
-      'url': spiderUrl
-    };
+		let curlOps = {
+			'url': spiderUrl
+		};
 
-		// console.log('firing fn '+ spiderUrl);
+		return new Promise(function(resolve, reject){
+			curl.request(curlOps, function(err, stdout, meta) {
+					// uncomment the next line to log curl request
+					// console.log('%s %s', meta.cmd, meta.args.join(' '));
+					if (err) resolve({});
+					// load page html with cheerio
+					var $ = cheerio.load(stdout);
 
-    instance.request(curlOps, function(err, stdout, meta) {
-        // uncomment the next line to log curl request
-        // console.log('%s %s', meta.cmd, meta.args.join(' '));
 
-        // load page html with cheerio
-        var $ = cheerio.load(stdout);
+					// collect the arguments for the function
+					var args = [
+					];
 
+					$('.topic--arguments').find('dl').find('dt').each(function (index, elem) {
+						let theseArgs = {
+							name: $(this).html().trim(),
+							description: $(this).next('dd').html().trim()
+						};
+						if(theseArgs) args.push(theseArgs);
+					});
 
-				// collect the arguments for the function
-				var args = [
-				];
-
-				$(argsSelector).find('dt').each(function (index, elem) {
-					let theseArgs = {
-						name: $(this).html().trim(),
-						description: $(this).next('dd').html().trim()
-					};
-					if(theseArgs) args.push(theseArgs);
-				});
-
-				console.log($('.topic--title').next('p'));
-
-				// check if all packages are loaded until done
-				reCheck(
-					// test if done
-					function(){
-						return (totalsFsLoaded = totalFs);
-					},
-					// interval to recheck
-					60,
-					// callback
-					function(){
-						pckgsLoaded = totalPckgs;
+					if ($('.topic-header h1').html() !== null) {
+						// console.log(args);
+						resolve({
+							name: $('.topic-header h1').html(),
+							args: args
+						});
+					} else {
+						resolve({});
 					}
-				);
+			});
 
+		});
 
-    });
 }
 
-function loadPackage(instance, spiderUrl, pckgName) {
-    // define the structure of info to read off page using cheerio selectors
-    let fSelector = "#filterableItems tr a";
+function loadPackage( spiderUrl, pckgName) {
+		// define the structure of info to read off page using cheerio selectors
+		let fSelector = "#filterableItems tr a";
+
+
 
 		console.log(spiderUrl);
 
-    let curlOps = {
-      'url': spiderUrl
-    };
-
-    instance.request(curlOps, function(err, stdout, meta) {
-        // uncomment the next line to log curl request
-        // console.log('%s %s', meta.cmd, meta.args.join(' '));
-
-        // load page html with cheerio
-        var $ = cheerio.load(stdout);
-
-				if($(fSelector).length){
-					$(fSelector).each(function (i, elem) {
-	          let nextLink = $(elem).attr('href').split('//').join('/');
-
-						nextLink = "https://www.rdocumentation.org" + nextLink;
-
-	          loadF(instance, nextLink, pckgName);
-
-	        });
-				}
 
 
+		return new Promise(function(resolve, reject){
+			let depFunctions = [];
+			let pckgs = {};
 
-				// check if all packages are loaded until done
-				reCheck(
-					// test if done
-					function(){
-						return (totalsFsLoaded = totalFs);
-					},
-					// interval to recheck
-					60,
-					// callback
-					function(){
-						pckgsLoaded = totalPckgs;
-					}
-				);
+			let curlOps = {
+	      'url': spiderUrl
+	    };
+
+			curl.request({ url: spiderUrl }, function(err, stdout, meta) {
+				let version = JSON.parse(stdout).versions.slice(-1)[0].uri;
+				console.log(version);
+				curlOps.url = "https://www.rdocumentation.org" + version;
+
+				curl.request(curlOps, function(err, stdout, meta) {
+						// uncomment the next line to log curl request
+						// console.log('%s %s', meta.cmd, meta.args.join(' '));
+						if (err) reject(err);
+						// load page html with cheerio
+						var $ = cheerio.load(stdout);
+
+						if($(fSelector).length){
+							$(fSelector).each(function (i, elem) {
+								let nextLink = $(elem).attr('href').split('//').join('/');
+
+								nextLink = "https://www.rdocumentation.org" + nextLink;
+
+								depFunctions.push(loadF(nextLink, pckgName));
+
+							});
+						}
+
+						Promise.all(depFunctions).then(function(data) {
+							// array of function objects?
+							resolve(new packageDef(pckgName, { functions: data}));
+						}).catch((reason)=>{
+							console.log('unable to assemble functions');
+						});
+
+				});
+
+			});
 
 
-    });
+			});
+
 }
 
-function scrapeRDocsRecursive(instance, spiderUrl, cb) {
+function scrapeRDocsRecursive(spiderUrl) {
     // define the structure of info to read off page using cheerio selectors
     let packageSelector = ".maintained-package h4 a";
 
@@ -129,54 +134,55 @@ function scrapeRDocsRecursive(instance, spiderUrl, cb) {
       'url': spiderUrl
     };
 
-    instance.request(curlOps, function(err, stdout, meta) {
-        // uncomment the next line to log curl request
-        // console.log('%s %s', meta.cmd, meta.args.join(' '));
+		return new Promise(function(resolve, reject){
+			curl.request(curlOps, function(err, stdout, meta) {
+					// uncomment the next line to log curl request
+					// console.log('%s %s', meta.cmd, meta.args.join(' '));
 
-        // totalRequests++;
+					if (err) resolve({});
+					// load page html with cheerio
+					var $ = cheerio.load(stdout);
+					let pckgURIs = [];
 
-        // load page html with cheerio
-        var $ = cheerio.load(stdout);
+					$(packageSelector).each(function (i, elem) {
+						let nextLink = $(elem).attr('href');
+						let pckgName = nextLink.split('/').slice(-1)[0];
+						dta.packages = _.assign(dta.packages, new packageDef(pckgName, {functions:[]}));
 
-				$(packageSelector).each(function (i, elem) {
-          let nextLink = $(elem).attr('href');
-					let pckgName = nextLink.split('/').slice(-1)[0];
+						// TODO add api call to actually determine version appended here
+						nextLink = "https://www.rdocumentation.org" + nextLink;
 
-					dta.packages.push({
-						pckgName: {}
+						// depPckg.push(loadPackage( nextLink, pckgName));
+						pckgURIs.push({ name: pckgName, uri: nextLink });
+
+						totalPckgs++;
 					});
 
-					nextLink = "https://www.rdocumentation.org" + nextLink + "/versions/3.3.2/";
-
-          loadPackage(instance, nextLink, pckgName);
-
-					totalPckgs++;
-        });
-
-				// check if all packages are loaded until done
-				reCheck(
-					// test if done
-					function(){
-						return (pckgsLoaded = totalPckgs);
-					},
-					// interval to recheck
-					100,
-					// callback
-					function(cb){
-						cb(dta);
-					}
-				);
+					resolve(pckgURIs);
 
 
-    });
+			});
+		});
 }
 
 // scrape the r stat package docs from the website, recursively
-scrapeRDocsRecursive(curl, 'https://www.rdocumentation.org/collaborators/name/R-core%20R-core@R-project.org', function (dta) {
-  console.log(dta);
+let rDocPromise = scrapeRDocsRecursive('https://www.rdocumentation.org/collaborators/name/R-core%20R-core@R-project.org');
 
-  // write a jsonCache
-  jsonfile.writeFile(cachePath, dta, function (err) {
-    if (!err) console.log("wrote file");
-  });
+rDocPromise.then(function (pckgs) {
+	let packagePromises = [];
+	pckgs.map((item) => {
+		packagePromises.push(loadPackage( item.uri, item.name));
+	});
+
+	Promise.all(packagePromises).then((data) => {
+		console.log(data);
+
+		let fileOut = cachePath + "r_doc_model.json";
+	  // write a jsonCache
+	  jsonfile.writeFile(fileOut, data, function (err) {
+	    if (!err) console.log("wrote file");
+	  });
+	});
+}).catch((reason) => {
+	console.log('rejected one');
 });
