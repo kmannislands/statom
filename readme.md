@@ -27,7 +27,7 @@ Statom uses [electron](http://electron.atom.io/) as an application wrapper, [web
 
 ## Contributing
 
-I can't stop you. Make an issue, then a pull request.
+I can't stop you. First check [Waffle.io](https://waffle.io/kmannislands/statom) then if it isn't there, make an issue and a branch.
 
 ## License
 
