@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/kmannislands/statom.png?label=ready&title=Ready)](https://waffle.io/kmannislands/statom)
 ## Statom
 
 An electron-wrapped node-based GUI for making statistics in the r language accessible and intuitive. **Statom** seeks to provide a different paradigm through which to manipulate data and create inferences and visualization.
