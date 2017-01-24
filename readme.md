@@ -1,5 +1,5 @@
 
-## Statom [![Stories in Ready](https://badge.waffle.io/kmannislands/statom.png?label=ready&title=Ready)](https://waffle.io/kmannislands/statom)
+# Statom [![Stories in Ready](https://badge.waffle.io/kmannislands/statom.png?label=ready&title=Ready)](https://waffle.io/kmannislands/statom)
 
 An electron-wrapped node-based GUI for making statistics in the r language accessible and intuitive. **Statom** seeks to provide a different paradigm through which to manipulate data and create inferences and visualization.
 
@@ -20,7 +20,7 @@ Start the live reload and watching with webpack, etc:
 yarn start
 ```
 
-# Technologies
+## Technologies
 
 Statom uses [electron](http://electron.atom.io/) as an application wrapper, [webpack](https://webpack.github.io/) to package dependencies for the frontend, and of course [React](https://facebook.github.io/react/) defined with [ES6 classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) and complied by [babel](https://babeljs.io/).
 

@@ -5,7 +5,7 @@ class CanvasToolbar extends React.Component {
 
   render() {
     return (
-			<Toolbar title="epp">
+			<Toolbar title="Statom">
         <Actionbar>
           <ButtonGroup>
             <Button glyph="home" />

@@ -85,9 +85,9 @@ const template = [{
   label: 'Help',
   role: 'help',
   submenu: [{
-    label: 'Learn More',
+    label: 'On GitHub',
     click: function() {
-      require('shell').openExternal('https://github.com/importre/epp')
+      require('shell').openExternal('https://github.com/kmannislands/statom')
     }
   },
 ]}];
@@ -97,7 +97,7 @@ var darwinMenu = [{
   submenu: [{
     label: 'About ' + app.getName(),
     click: function(item, focusedWindow) {
-      var file = path.resolve(__dirname, 'assets/epp.png');
+      var file = path.resolve(__dirname, 'assets/statom.png');
       var appIcon = NativeImage.createFromPath(file);
       dialog.showMessageBox(focusedWindow, {
         'type': 'info',
