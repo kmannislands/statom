@@ -82,6 +82,7 @@ class NodeStore {
 
 		console.log("adding currId: " + currId);
 
+
 		// dummy definition of a new node
 		let newNode = {
 			key: currId,
