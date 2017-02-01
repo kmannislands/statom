@@ -32,7 +32,6 @@ const assembleLine = function(startCoords, endCoords) {
 			startCoords[0] + (Math.sin(angleRadians / 2) * (distance / 4)),
 			startCoords[1] + (Math.cos(angleRadians / 2) * (distance /4))
 		];
-		console.log(firstQuarter);
 		lineArr.push(firstQuarter);
 		let lastQuarter = [
 			// start at half the angle between the two,

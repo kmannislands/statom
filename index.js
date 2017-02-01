@@ -46,10 +46,10 @@ function createMainWindow() {
 
 	const win = new BrowserWindow(opts);
 	if (process.env.DEV) {
-		win.loadUrl('http://localhost:8000/dev.html');
+		win.loadURL('http://localhost:8000/dev.html');
 		win.openDevTools();
 	} else {
-		win.loadUrl(`file://${__dirname}/index.html`);
+		win.loadURL(`file://${__dirname}/index.html`);
 	}
 	win.on('closed', onClosed);
 
@@ -75,7 +75,7 @@ app.on('window-all-closed', () => {
 	app.quit();
 });
 
-app.on('activate-with-no-open-windows', () => {
+app.on('activate', () => {
 	if (!mainWindow) {
 		mainWindow = createMainWindow();
 	}
@@ -98,9 +98,7 @@ app.on('ready', () => {
 // Respond to request for r version from frontend
 ipcMain.on('request-r-version', (event, arg) => {
 	R("r/version.r")
-	.data({
-		flag: '1'
-	})
+	.data({})
 	.call(function(err, d) {
 		if (err){
 			event.sender.send('r-version', new Buffer(err).toString());
@@ -117,6 +115,16 @@ ipcMain.on('request-updateFile', (event, arg) => {
 				"Error: problem reading your file.");
 		}
 		else ipcMain.sender.send('updateFile', obj);
+	});
+});
+
+ipcMain.on('request-updateRDef', (event, arg) => {
+	jsonfile.readFile('./cache/r_doc_model.json', function(err, obj) {
+		if (err)	{
+			ipcMain.sender.send('updateRDef',
+				"Error: problem reading R defs your file.");
+		}
+		else ipcMain.sender.send('updateRDef', obj);
 	});
 });
 

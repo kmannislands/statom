@@ -110,7 +110,9 @@ class NodeStore {
 				}
 			],
 			type: 'input',
-			coords: [0, 0]
+			coords: [0, 0],
+			updated: true,
+			value: 0
 		};
 		this.setState(function(prevState) {
 			// milad help, there's gotta be a better way to do this
@@ -193,9 +195,9 @@ class NodeStore {
 		let halfway = ((totalHandlesOfType - 1) / 2);
 
 		if (handleIndex <= halfway) {
-			xOffset = xOffset + 64 - ((halfway - handleIndex) * 21);
+			xOffset = xOffset + 64 - ((halfway - handleIndex) * 28);
 		} else {
-			xOffset = xOffset + 64 + ((handleIndex - halfway) * 21);
+			xOffset = xOffset + 64 + ((handleIndex - halfway) * 28);
 		}
 		// xOffset = xOffset + 64;
 		coords = [xOffset, yOffset];

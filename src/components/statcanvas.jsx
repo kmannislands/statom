@@ -17,6 +17,7 @@ import connectToStores from 'alt-utils/lib/connectToStores';
 
 // import the relevant store for flux
 import NodeStore from "../stores/NodeStore";
+import RStore from "../stores/RStore";
 
 // uses hack defined in html script
 // we say var es5Require = require

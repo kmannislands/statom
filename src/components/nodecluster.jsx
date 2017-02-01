@@ -20,7 +20,6 @@ class NodeCluster extends React.Component {
 		for (var key in this.props.contents) {
 			if (this.props.contents.hasOwnProperty(key)) {
 		    var value = this.props.contents[key];
-				console.log(value.key);
 				nodeArr.push(
 					(<Node key={key} id={key}
 						inlets={value.inlets} outlets={value.outlets}
