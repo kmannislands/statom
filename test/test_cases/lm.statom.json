@@ -1,0 +1,21 @@
+{
+	"dsfaf32432": {
+		"type": "string",
+		"outlets": [
+			{
+					"id": "o-1-0",
+					"data_type": "string",
+					"name": "val",
+					"to": ""
+			}
+		]
+	},
+	"drop": {
+		"type": "read.dta",
+		"inlets": [
+			{
+
+			}
+		],
+	}
+}

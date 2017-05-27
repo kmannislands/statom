@@ -9,8 +9,8 @@ const ipcRenderer = require('electron').ipcRenderer;
 
 
 // import backend js
-const StatCanvas = require('./StatCanvas');
-const Node = require('./Node');
+const StatCanvas = require('../backend/StatCanvas');
+const Node = require('../backend/Node');
 
 // Variables to be used in testing
 let TestCanvas, TestNode;

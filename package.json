@@ -16,7 +16,7 @@
   "electronVersion": "0.34.1",
   "scripts": {
     "test": "xo",
-    "test-backend": "mocha ./backend/test.js",
+    "test-backend": "mocha ./test/backend.js",
     "start": "node starter.js --2nd",
     "start-1st": "node starter.js",
     "build": "yarn run build-osx && yarn run build-win",
@@ -41,6 +41,7 @@
     "electron": "^1.4.12",
     "electron-debug": "^0.2.1",
     "fs": "^0.0.1-security",
+    "global": "^4.3.1",
     "history": "^1.12.3",
     "jsonfile": "^2.4.0",
     "lodash": "^4.17.4",
@@ -53,7 +54,8 @@
     "react-draggable": "^2.2.3",
     "react-faux-dom": "^3.0.0",
     "react-photonkit": "^0.3.2",
-    "recharts": "^0.19.1"
+    "recharts": "^0.19.1",
+    "web-mocha": "^0.0.10"
   },
   "devDependencies": {
     "babel-core": "^6.4.0",
